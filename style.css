@@ -1,0 +1,27 @@
+body{
+    margin: 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    flex-direction: column;
+    text-align: left;
+}
+
+
+
+input{
+    border: none;
+    font-size: 2rem;
+    width: 200px;
+}
+
+input:focus{
+    border: none;
+    border-color: white;
+}
+
+.items{
+    position: static;
+    font-size: 2rem;
+}
