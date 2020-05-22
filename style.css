@@ -5,7 +5,8 @@ body{
     align-items: center;
     height: 100vh;
     flex-direction: column;
-    text-align: left;
+    text-align: center;
+    box-sizing: border-box;
 }
 
 
@@ -13,15 +14,56 @@ body{
 input{
     border: none;
     font-size: 2rem;
-    width: 200px;
+    width: 40vw;
+    text-align:center;
+    border-bottom: 2px solid lightgrey;
+    outline: 0;
 }
 
 input:focus{
-    border: none;
-    border-color: white;
+    border-bottom: 2px solid black;
+}
+
+
+input::placeholder{
+    color: lightgrey;
+}
+
+input:focus::placeholder{
+    color: transparent;
 }
 
 .items{
-    position: static;
+    position: relative;
     font-size: 2rem;
 }
+
+.itemLabel{
+    margin:auto;
+    margin-bottom: 1rem;
+    transition: all 0.5s;
+    position:relative;
+    width: max-content;
+}
+
+.itemLabel::before{
+    display: inline-block;
+    content: '';
+    width: 100%;
+    height: .15rem;
+    background-color: black;
+    position: absolute;
+    top: 1.25rem;
+}
+
+/* .items >*::after{
+    display: inline-block;
+    content: '';
+    width: .5rem;
+    height: .5rem;
+    background-color: black;
+    margin-left: 1rem;
+    margin-bottom: .25rem;
+    border-radius: 50%;
+} */
+
