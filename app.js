@@ -1,5 +1,6 @@
 const newItem = document.querySelector('#newInput')
 
+let items;
 
 window.addEventListener('submit', (e)=> {
     e.preventDefault()
@@ -9,10 +10,13 @@ window.addEventListener('submit', (e)=> {
     a.classList.add('itemLabel')
     newItem.value = ''
     document.querySelector('.items').appendChild(a)
+    a.addEventListener('click', handleClick)
     }
 })
 
-
+function handleClick() {
+    this.classList.toggle('crossed')
+}
 
 
 
