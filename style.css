@@ -11,34 +11,42 @@ body{
     letter-spacing: 0.05rem;
     background-image: url("background.jpg");
     background-size: cover;
+    text-shadow: 1px 1px 2px black;
 }
 
-
+:root{
+    --f-color: white;
+}
 
 input{
     border: none;
     font-size: 2.2rem;
-    width: 40vw;
+    width: min-content;
     text-align:center;
-    border-bottom: 2px solid white;
+    border-bottom: 2px solid var(--f-color);
     outline: 0;
     font-family: -apple-system, BlinkMacSystemFont, "Neue Haas Grotesk Text Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
-    opacity: 0.5;
+    opacity: 0.4;
     background-color: transparent;
+    color: var(--f-color);
+    text-shadow: 1px 1px 2px black;
+}
+
+input::placeholder{
+    color: var(--f-color);
 }
 
 input:hover{
     opacity: 1;
+    text-shadow: none;
 }
 
 input:focus{
+    opacity: 1;
     border-bottom: 2px solid white;
+    text-shadow: none;
 }
 
-
-input::placeholder{
-    color: white;
-}
 
 input:focus::placeholder{
     color: transparent;
@@ -48,7 +56,7 @@ input:focus::placeholder{
     position: relative;
     font-size: 2.2rem;
     font-weight: 500;
-    color:white;
+    color:var(--f-color);
 }
 
 .itemLabel{
@@ -65,7 +73,7 @@ input:focus::placeholder{
     content: '';
     width: 100%;
     height: .15rem;
-    background-color: white;
+    background-color: var(--f-color);
     position: absolute;
     top: 1.25rem;
     transform: scaleX(1);
@@ -76,7 +84,7 @@ input:focus::placeholder{
     content: '';
     width: 100%;
     height: .15rem;
-    background-color: white;
+    background-color: var(--f-color);
     position: absolute;
     top: 1.25rem;
     transition: transform 0.5s;
