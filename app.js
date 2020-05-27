@@ -1,5 +1,6 @@
 const newInput = document.querySelector('#newInput')
 const items = document.querySelector('.items')
+const deleteItems = document.querySelector('i')
 let itemsList = localStorage.getItem('items') || [];
 
 function onLoad(){
@@ -40,4 +41,13 @@ function handleClick() {
 }
 
 
+deleteItems.addEventListener('click', deleteCrossed)
 
+function deleteCrossed(){
+    const allItems = [...items.querySelectorAll('div')]
+    const filtered = allItems.filter(item => item.classList.contains('crossed')).forEach(item => {
+        itemsList.splice(itemsList.indexOf(item.outerHTML), 1)
+        localStorage.setItem('items', itemsList)
+        item.remove()
+    })
+}
