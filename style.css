@@ -9,7 +9,7 @@ body{
     box-sizing: border-box;
     font-family: -apple-system, BlinkMacSystemFont, "Neue Haas Grotesk Text Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
     letter-spacing: 0.05rem;
-    background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url("background.jpg");
+    background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url("background.jpg");
     background-size: cover;
     text-shadow: 1px 1px 2px black;
     overflow: hidden;
@@ -17,6 +17,10 @@ body{
 
 :root{
     --f-color: white;
+}
+
+div {
+    white-space: nowrap;
 }
 
 input{
@@ -27,7 +31,7 @@ input{
     border-bottom: 2px solid var(--f-color);
     outline: 0;
     font-family: -apple-system, BlinkMacSystemFont, "Neue Haas Grotesk Text Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
-    opacity: 0.4;
+    opacity: 0.3;
     background-color: transparent;
     color: var(--f-color);
     text-shadow: 1px 1px 2px black;
@@ -68,6 +72,11 @@ input:focus::placeholder{
     position:relative;
     width: max-content;
     transition: hover 25ms;
+}
+
+.edit-mode:hover{
+    cursor: text;
+    transform:none;
 }
 
 .itemLabel.crossed::before{
@@ -127,12 +136,18 @@ input:focus::placeholder{
     margin-right: 1rem;
 }
 
+
+
 .material-icons{
     color : var(--f-color);
     font-size : 2rem;
     opacity: 0.5;
     cursor: pointer;
     margin-bottom: 0.5rem;
+}
+
+.material-icons.active{
+    opacity: 1;
 }
 
 .material-icons:hover{
