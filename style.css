@@ -72,6 +72,7 @@ input:focus::placeholder{
     position:relative;
     width: max-content;
     transition: hover 25ms;
+    outline: 0;
 }
 
 .edit-mode:hover{

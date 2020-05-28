@@ -100,6 +100,7 @@ function itemsEdit(){
                     e.preventDefault()
                     item.blur()
                 }
+            })
             //when the blur event happens, we want to rewrite the itemsList and save to localStorage
             item.addEventListener('focusout', ()=>{
                 //in case user deleted everything, we'll add something to the div so that its not empty
@@ -110,7 +111,12 @@ function itemsEdit(){
                 itemsList.splice(currentIndex, 1, item.outerHTML)
                 localStorage.setItem('items', itemsList)
             })
-            })
+            
+            item.addEventListener('focusin', () => {
+                console.log(item);
+                
+            });
+            
         }else{
             //if the edit is turned off, we want to return the cross-out functionality
             item.addEventListener('click', handleClick)
