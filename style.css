@@ -9,7 +9,7 @@ body{
     box-sizing: border-box;
     font-family: -apple-system, BlinkMacSystemFont, "Neue Haas Grotesk Text Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
     letter-spacing: 0.05rem;
-    background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url("background.jpg");
+    background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url("https://source.unsplash.com/1600x900/?nature,mountain");
     background-size: cover;
     text-shadow: 1px 1px 2px black;
     overflow: hidden;

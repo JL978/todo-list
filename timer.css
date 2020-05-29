@@ -1,0 +1,63 @@
+*{
+    box-sizing: border-box;
+    margin: 0
+}
+
+:root{
+    --p-size: 1vw;
+}
+
+body{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-family: -apple-system, BlinkMacSystemFont, "Neue Haas Grotesk Text Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    position: relative;
+}
+
+.timer{
+    position: relative;
+}
+
+h1{
+    font-size: 5rem;
+    font-weight: 500;
+}
+
+.progress-bar{
+    width: 40vw;
+    height: 40vw;
+    min-width: 250px;
+    min-height: 250px;
+    max-height: 500px;
+    max-width: 500px;
+    border: rgba(0,0,0,0.5) solid calc(var(--p-size)/4);
+    position: absolute;
+    border-radius: 50%;
+    display: inline-block;
+    margin: 0 auto;
+}
+
+.progress{
+    width: calc(40vw + calc(var(--p-size)/2));
+    height: calc(40vw + calc(var(--p-size)/2));
+    min-width: calc(250px + calc(var(--p-size)/2));
+    min-height: calc(250px + calc(var(--p-size)/2));
+    max-height: calc(500px + calc(var(--p-size)/2));
+    max-width: calc(500px + calc(var(--p-size)/2));
+    position: absolute;
+    display: flex;
+    justify-content: center;
+}
+
+.progress::before{
+    content: '';
+    width: var(--p-size);
+    height: var(--p-size);
+    max-width: 45px;
+    max-height: 45px;
+    background-color: black;
+    position: absolute;
+    border-radius: 50%;
+}
