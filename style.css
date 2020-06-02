@@ -9,8 +9,9 @@ body{
     box-sizing: border-box;
     font-family: -apple-system, BlinkMacSystemFont, "Neue Haas Grotesk Text Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
     letter-spacing: 0.05rem;
-    background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url("https://source.unsplash.com/1600x900/?nature,mountain");
-    background-size: cover;
+    /* background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url("https://source.unsplash.com/1600x900/?nature,mountain"); */
+    /* background-size: cover; */
+    background-color: #121212;
     text-shadow: 1px 1px 2px black;
     overflow: hidden;
 }
@@ -31,7 +32,7 @@ input{
     border-bottom: 2px solid var(--f-color);
     outline: 0;
     font-family: -apple-system, BlinkMacSystemFont, "Neue Haas Grotesk Text Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
-    opacity: 0.3;
+    opacity: 0.1;
     background-color: transparent;
     color: var(--f-color);
     text-shadow: 1px 1px 2px black;
@@ -42,7 +43,7 @@ input::placeholder{
 }
 
 input:hover{
-    opacity: 1;
+    opacity: 0.8;
     text-shadow: none;
 }
 
@@ -75,10 +76,6 @@ input:focus::placeholder{
     outline: 0;
 }
 
-.edit-mode:hover{
-    cursor: text;
-    transform:none;
-}
 
 .itemLabel.crossed::before{
     display: inline-block;
@@ -125,6 +122,10 @@ input:focus::placeholder{
 }
 
 
+.edit-mode:hover{
+    cursor: text;
+    transform:none;
+}
 
 
 
@@ -142,17 +143,17 @@ input:focus::placeholder{
 .material-icons{
     color : var(--f-color);
     font-size : 2rem;
-    opacity: 0.5;
+    opacity: 0.3;
     cursor: pointer;
     margin-bottom: 0.5rem;
 }
 
 .material-icons.active{
-    opacity: 1;
+    opacity: 0.8;
 }
 
 .material-icons:hover{
-    opacity: 1;
+    opacity: 0.8;
     transform: scale(1.1);
 }
 

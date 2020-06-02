@@ -5,6 +5,8 @@
 
 :root{
     --p-size: 1vw;
+     --text-color: #00897B; /*#B1B1B1 */
+    --progress-color: #00897B;
 }
 
 body{
@@ -14,6 +16,7 @@ body{
     height: 100vh;
     font-family: -apple-system, BlinkMacSystemFont, "Neue Haas Grotesk Text Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
     position: relative;
+    background-color: #121212;
 }
 
 .timer{
@@ -23,6 +26,7 @@ body{
 h1{
     font-size: 5rem;
     font-weight: 500;
+    color: var(--text-color);
 }
 
 .progress-bar{
@@ -32,7 +36,7 @@ h1{
     min-height: 250px;
     max-height: 500px;
     max-width: 500px;
-    border: rgba(0,0,0,0.5) solid calc(var(--p-size)/4);
+    border: var(--progress-color) solid calc(var(--p-size)/3.5);
     position: absolute;
     border-radius: 50%;
     display: inline-block;
@@ -40,15 +44,17 @@ h1{
 }
 
 .progress{
-    width: calc(40vw + calc(var(--p-size)/2));
-    height: calc(40vw + calc(var(--p-size)/2));
-    min-width: calc(250px + calc(var(--p-size)/2));
-    min-height: calc(250px + calc(var(--p-size)/2));
-    max-height: calc(500px + calc(var(--p-size)/2));
-    max-width: calc(500px + calc(var(--p-size)/2));
+    width: calc(40vw + calc(var(--p-size)/1.5));
+    height: calc(40vw + calc(var(--p-size)/1.5));
+    min-width: calc(250px + calc(var(--p-size)/1.5));
+    min-height: calc(250px + calc(var(--p-size)/1.5));
+    max-height: calc(500px + calc(var(--p-size)/1.5));
+    max-width: calc(500px + calc(var(--p-size)/1.5));
     position: absolute;
     display: flex;
     justify-content: center;
+    transition: transform 1s;
+    transition-timing-function: cubic-bezier(0.24, 0.11, 0.49, 0.43);
 }
 
 .progress::before{
@@ -57,7 +63,7 @@ h1{
     height: var(--p-size);
     max-width: 45px;
     max-height: 45px;
-    background-color: black;
+    background-color: var(--progress-color);
     position: absolute;
     border-radius: 50%;
 }
