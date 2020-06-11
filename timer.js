@@ -1,14 +1,19 @@
 const timerFace = document.querySelector('h1')
 const progress = document.querySelector('.progress')
+let runTime
+let mover
+let counter
 
 setTime(0)
 
 function timer(seconds){
+     clearInterval(mover)
+     clearInterval(counter)
+
     const start = Date.now()
     const end = start + seconds*1000
     const totalTime = end - start
     
-    setTime(seconds)
     mover = setInterval(()=>{
         milLeft = end - Date.now()
         if (milLeft < 0) {
@@ -29,9 +34,8 @@ function timer(seconds){
         setTime(secLeft)
         
     }, 1000);
-    
 }
-timer(0)
+
 function setTime(seconds){
     const min = Math.floor(seconds/60)
     const sec = seconds%60 
@@ -43,3 +47,40 @@ function updateProgress(timeLeft, totalTime){
     degree = (1- timeLeft/totalTime) * 360
     progress.style.transform = `rotate(${degree}deg)`
 }
+
+const buttonInputs = document.querySelectorAll(".setTime")
+const manualInput = document.querySelector('.time-input')
+const buttons = document.querySelector('.buttons')
+let startButton = document.querySelector("#start")
+const pauseButton = document.querySelector("#pause")
+const resetButton = document.querySelector("#reset")
+
+
+buttonInputs.forEach(button => button.addEventListener('click', (e) => {
+    runTime = e.target.dataset.min * 60
+    setTime(runTime)
+}))
+
+
+function startClick(){
+    startButton = document.querySelector("#start")
+    if (!startButton.classList.contains("inProgress") && runTime != 0 && runTime){
+        startButton.classList.toggle("inProgress")
+
+        manualInput.classList.toggle('hide')
+        buttons.classList.toggle('hide')
+
+        startButton.removeEventListener('click', startClick)
+        timer(runTime)
+    }
+}
+
+startButton.addEventListener('click', startClick)
+
+pauseButton.addEventListener('click', () =>{
+    startButton = document.querySelector("#start")
+    if (startButton.classList.contains("inProgress")){
+        startButton.classList.toggle("inProgress")
+        startButton.addEventListener('click', startClick)
+    }
+})

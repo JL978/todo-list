@@ -49,15 +49,30 @@ h1{
     width: 100px;
 }
 
-.material-icons{
+
+.control-button{
     color: var(--text-color);
-    font-size: 2rem;
+    z-index: 1000;
     cursor: pointer;
 }
-
-.material-icons:hover{
+.control-button:hover{
     color: white;
 }
+
+.control-button:active{
+    transform: scale(1.1);
+}
+
+.control-button.inProgress{
+    cursor: default;
+    color: var(--text-color);
+}
+
+.control-button.inProgress:active{
+    transform: none;
+}
+
+
 
 /* the round circle progress bar */
 .progress-bar{
@@ -136,6 +151,14 @@ button:active{
     transform: scale(1.1);
 }
 
+
+.inputs>.buttons.hide{
+    display: none;
+}
+
+.inputs>.time-input.hide{
+    display: none;
+}
 
 #SetTimer{
     background: none;
