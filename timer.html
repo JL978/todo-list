@@ -6,12 +6,35 @@
     <title>timer</title>
     <link rel="stylesheet" href="timer.css">
     <script src="timer.js" defer></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 </head>
 <body>
-    <div class="timer">
-        <h1></h1>
+
+    <div class="displays">
+        <div class="timer">
+            <h1></h1>
+        </div>
+        <div class="controls">
+            <i class="material-icons" title='Start/Resume' id='start'>play_arrow</i>
+            <i class="material-icons" title='Pause' id='pause'>pause</i>
+            <i class="material-icons" title='Restart' id='restart'>loop</i>
+        </div>
+        <div class="progress-bar"></div>
+        <div class="progress"></div>
     </div>
-    <div class="progress-bar"></div>
-    <div class="progress"></div>
+    
+    <div class="inputs">
+        <div class="buttons">
+            <button class="setTime" data-min="5">5 min</button>
+            <button class="setTime" data-min="10">10 min</button>
+            <button class="setTime" data-min="15">15 min</button>
+            <button class="setTime" data-min="25">25 min</button>
+            <button class="setTime" data-min="60">60 min</button>
+        </div>
+        <div class="time_input">
+            <input type="text" name="SetTimer" id="SetTimer" placeholder="Set Time" title="00:00 format or specify amount of minutes">
+        </div>
+    </div>
+    
 </body>
 </html>
