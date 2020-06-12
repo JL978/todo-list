@@ -6,18 +6,17 @@ let counter
 
 setTime(0)
 
-function timer(seconds=0, resume=false, mil=0){
+function timer(seconds, resume=false, mil=0){
     clearInterval(mover)
     clearInterval(counter)
 
     const start = Date.now()
     if (resume){
         var end = start + mil
-        var totalTime = runTime*1000
     }else{
         var end = start + seconds*1000
-        var totalTime = end - start
     }
+    var totalTime = seconds*1000
     
     mover = setInterval(()=>{
         milLeft = end - Date.now()
@@ -84,13 +83,20 @@ function startClick(){
 
 startButton.addEventListener('click', startClick)
 
+function resumeClick(){
+    currentTotalTime = parseInt(localStorage.getItem('totalTime'))
+    mil = parseInt(localStorage.getItem('mil'))
+    timer(currentTotalTime, resume=true, mil=mil)
+    startButton.classList.add("inProgress")
+}
+
 pauseButton.addEventListener('click', () =>{
     startButton = document.querySelector("#start")
     if (startButton.classList.contains("inProgress")){
         clearInterval(mover)
         clearInterval(counter)
-        startButton.addEventListener('click', startClick)
-        console.log('hi')
+        startButton.classList.remove("inProgress")
+        startButton.addEventListener('click', resumeClick)
     }
 })
 
@@ -135,14 +141,13 @@ manualInput.addEventListener('keydown', (e)=>{
 })
 
 resetButton.addEventListener('click', () => {
-    if (startButton.classList.contains("inProgress")){
-        clearInterval(mover)
-        clearInterval(counter)
-        setTime(runTime)
-        progress.style.transform = `rotate(0deg)`
-        manualInputDiv.classList.remove('hide')
-        buttons.classList.remove('hide')
-        startButton.classList.remove("inProgress")
-        startButton.addEventListener('click', startClick)
-    }
+    clearInterval(mover)
+    clearInterval(counter)
+    setTime(runTime)
+    progress.style.transform = `rotate(0deg)`
+    manualInputDiv.classList.remove('hide')
+    buttons.classList.remove('hide')
+    startButton.classList.remove("inProgress")
+    startButton.removeEventListener('click', resumeClick)
+    startButton.addEventListener('click', startClick)
 })
