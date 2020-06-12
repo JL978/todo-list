@@ -127,6 +127,8 @@ h1{
     display: grid;
     grid-gap: 15px;
     grid-template-columns: repeat(5, 1fr);
+    opacity: 1;
+    transition: opacity 1s;
 }
 
 button{
@@ -153,11 +155,16 @@ button:active{
 
 
 .inputs>.buttons.hide{
-    display: none;
+    opacity: 0;
+}
+
+.inputs>.time-input{
+    opacity: 1;
+    transition: opacity 1s;
 }
 
 .inputs>.time-input.hide{
-    display: none;
+    opacity: 0;
 }
 
 #SetTimer{
