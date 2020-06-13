@@ -1,5 +1,6 @@
 const timerFace = document.querySelector('h1')
 const progress = document.querySelector('.progress')
+const beep = document.querySelector('audio')
 let runTime
 let mover
 let counter
@@ -24,6 +25,7 @@ function timer(seconds, resume=false, mil=0){
         if (milLeft < 0) {
             clearInterval(mover)
             progress.style.transform = `rotate(0deg)`
+            beep.play()
             return
         }
         updateProgress(milLeft, totalTime)
@@ -40,6 +42,7 @@ function timer(seconds, resume=false, mil=0){
         
     }, 1000);
 }
+
 
 function setTime(seconds){
     const min = Math.floor(seconds/60)

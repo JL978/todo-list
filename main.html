@@ -8,15 +8,46 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 </head>
 <body>
-    <div class="items">
+    <div class="todoList">
+        <div class="items">
+        </div>
+        <form>
+            <input type="text" placeholder="add new item" id='newItem' autocomplete="off">
+        </form>
+        <div class="tools">
+            <i class="material-icons edit-button" title='Focus' id='timer'>timer</i>
+            <i class="material-icons edit-button" title='Edit' id='editItems'>edit</i>
+            <i class="material-icons edit-button" title='Delete all crossed items' id='deleteItems'>delete_outline</i>
+        </div>
     </div>
-    <form>
-        <input type="text" placeholder="add new item" id='newInput' autocomplete="off">
-    </form>
-    <div class="tools">
-        <i class="material-icons" title='Focus' id='timer'>timer</i>
-        <i class="material-icons" title='Edit' id='editItems'>edit</i>
-        <i class="material-icons" title='Delete all crossed items' id='deleteItems'>delete_outline</i>
+    
+    <div class="focus">
+        <div class="displays">
+            <div class="timer">
+                <h1></h1>
+            </div>
+            <div class="controls">
+                <i class="material-icons control-button" title='Start/Resume' id='start'>play_arrow</i>
+                <i class="material-icons control-button" title='Pause' id='pause'>pause</i>
+                <i class="material-icons control-button" title='Reset' id='restart'>loop</i>
+            </div>
+            <div class="progress-bar"></div>
+            <div class="progress"></div>
+        </div>
+        
+        <div class="inputs">
+            <div class="buttons">
+                <button class="setTime" data-min="5">5 min</button>
+                <button class="setTime" data-min="10">10 min</button>
+                <button class="setTime" data-min="15">15 min</button>
+                <button class="setTime" data-min="25">25 min</button>
+                <button class="setTime" data-min="60">60 min</button>
+            </div>
+            <div class="time-input">
+                <input type="text" name="SetTimer" id="SetTimer" maxlength="5" placeholder="Set Time" title="00:00 format or specify amount of minutes">
+            </div>
+        </div>
+        <audio src="beep.mp3"></audio>
     </div>
 
     <script src="app.js"></script>

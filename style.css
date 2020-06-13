@@ -1,60 +1,69 @@
+:root{
+    --main-color: white;
+    --primary-blue: #00897B;
+    --background-color: #121212;
+    --p-size: 1vw;
+}
+
+*{
+    box-sizing: border-box;
+    margin: 0
+}
+
 body{
+    margin: 0;
+    box-sizing: border-box;
+    height: 100vh;
+    background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url("https://source.unsplash.com/1600x900/");
+    background-size: cover;
+}
+
+.todoList{
     margin: 0px;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    height: 100%;
     flex-direction: column;
     text-align: center;
     box-sizing: border-box;
     font-family: -apple-system, BlinkMacSystemFont, "Neue Haas Grotesk Text Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
     letter-spacing: 0.05rem;
-    background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url("https://source.unsplash.com/1600x900/?nature,mountain");
-    background-size: cover;
-    /* background-color: #121212; */
-    /* text-shadow: 1px 1px 2px black; */
     overflow: hidden;
+    display: none;
 }
 
-:root{
-    --f-color: white;
-}
 
-div {
-    white-space: nowrap;
-}
-
-input{
+#newItem{
     border: none;
     font-size: 2.2rem;
     width: min-content;
     text-align:center;
-    border-bottom: 2px solid var(--f-color);
+    border-bottom: 2px solid var(--main-color);
     outline: 0;
     font-family: -apple-system, BlinkMacSystemFont, "Neue Haas Grotesk Text Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
     opacity: 0.3;
     background-color: transparent;
-    color: var(--f-color);
-    /* text-shadow: 1px 1px 2px black; */
+    color: var(--main-color);
 }
 
-input::placeholder{
-    color: var(--f-color);
+#newItem::placeholder{
+    color: var(--main-color);
 }
 
-input:hover{
+#newItem:hover{
     opacity: 0.8;
     text-shadow: none;
 }
 
-input:focus{
+#newItem:focus{
     opacity: 1;
     border-bottom: 2px solid white;
     text-shadow: none;
 }
 
 
-input:focus::placeholder{
+#newItem:focus::placeholder{
     color: transparent;
 }
 
@@ -62,7 +71,8 @@ input:focus::placeholder{
     position: relative;
     font-size: 2.2rem;
     font-weight: 500;
-    color:var(--f-color);
+    color:var(--main-color);
+    white-space: nowrap;
 }
 
 .itemLabel,
@@ -76,13 +86,12 @@ input:focus::placeholder{
     outline: 0;
 }
 
-
 .itemLabel.crossed::before{
     display: inline-block;
     content: '';
     width: 100%;
     height: .15rem;
-    background-color: var(--f-color);
+    background-color: var(--main-color);
     position: absolute;
     top: 1.25rem;
     transform: scaleX(1);
@@ -93,7 +102,7 @@ input:focus::placeholder{
     content: '';
     width: 100%;
     height: .15rem;
-    background-color: var(--f-color);
+    background-color: var(--main-color);
     position: absolute;
     top: 1.25rem;
     transition: transform 0.5s;
@@ -127,8 +136,6 @@ input:focus::placeholder{
     transform:none;
 }
 
-
-
 .tools{
     position: fixed;
     bottom: 0;
@@ -138,22 +145,200 @@ input:focus::placeholder{
     margin-right: 1rem;
 }
 
-
-
-.material-icons{
-    color : var(--f-color);
+.edit-button{
+    color : var(--main-color);
     font-size : 2rem;
     opacity: 0.3;
     cursor: pointer;
     margin-bottom: 0.5rem;
 }
 
-.material-icons.active{
+.edit-button.active{
     opacity: 0.8;
 }
 
-.material-icons:hover{
+.edit-button:hover{
     opacity: 0.8;
     transform: scale(1.1);
 }
 
+
+
+.focus{
+    display:grid;
+    justify-items: center;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    font-family: -apple-system, BlinkMacSystemFont, "Neue Haas Grotesk Text Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    background-color: var(--background-color);
+    grid-template-rows: 2fr auto 2fr;
+    grid-gap: 20px;
+}
+
+.displays{
+    grid-row: 2/3;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* the actual timer */
+.timer{
+    position: absolute;
+}
+
+h1{
+    font-size: 5rem;
+    font-weight: 500;
+    color: var(--primary-blue);
+}
+
+/*control buttons*/
+.controls{
+    display: flex;
+    position: absolute;
+    top:70%;
+    justify-content: space-evenly;
+    width: 100px;
+}
+
+
+.control-button{
+    color: var(--primary-blue);
+    z-index: 1000;
+    cursor: pointer;
+}
+.control-button:hover{
+    color: white;
+}
+
+.control-button:active{
+    transform: scale(1.1);
+}
+
+.control-button.inProgress{
+    cursor: default;
+    color: var(--primary-blue);
+}
+
+.control-button.inProgress:active{
+    transform: none;
+}
+
+
+/* the round circle progress bar */
+.progress-bar{
+    width: 40vw;
+    height: 40vw;
+    min-width: 250px;
+    min-height: 250px;
+    max-height: 500px;
+    max-width: 500px;
+    border: var(--primary-blue) solid calc(var(--p-size)/3.5);
+    border-radius: 50%;
+    display: inline-block;
+    margin: 0 auto;
+    position: absolute;
+}
+
+/* the container of the progress ball */
+.progress{
+    width: calc(40vw + calc(var(--p-size)/1.5));
+    height: calc(40vw + calc(var(--p-size)/1.5));
+    min-width: calc(250px + calc(var(--p-size)/1.5));
+    min-height: calc(250px + calc(var(--p-size)/1.5));
+    max-height: calc(500px + calc(var(--p-size)/1.5));
+    max-width: calc(500px + calc(var(--p-size)/1.5));
+    display: flex;
+    justify-content: center;
+}
+
+/* the actual progress ball */
+.progress::before{
+    content: '';
+    width: var(--p-size);
+    height: var(--p-size);
+    max-width: 45px;
+    max-height: 45px;
+    background-color: var(--primary-blue);
+    position: absolute;
+    border-radius: 50%;
+}
+
+.inputs{
+    grid-row: 3/span 1;
+    display: grid;
+    align-self: start;
+    grid-template-rows: repeat(2, 1fr);
+    align-items: center;
+    justify-items: center;
+    grid-gap: 20px;
+}
+
+.buttons{
+    display: grid;
+    grid-gap: 15px;
+    grid-template-columns: repeat(5, 1fr);
+    opacity: 1;
+    transition: opacity 1s;
+}
+
+button{
+    background: none;
+    border: 2px solid var(--primary-blue);
+    border-radius: 5px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: var(--primary-blue);
+    padding: 8px;
+    cursor: pointer;
+    outline: 0;
+}
+
+button:hover{
+    background: #00897B;
+    border: 2px solid white;
+    color: white;
+}
+
+button:active{
+    transform: scale(1.1);
+}
+
+
+.inputs>.buttons.hide{
+    opacity: 0;
+}
+
+.inputs>.time-input{
+    opacity: 1;
+    transition: opacity 1s;
+}
+
+.inputs>.time-input.hide{
+    opacity: 0;
+}
+
+#SetTimer{
+    background: none;
+    border: 2px solid var(--primary-blue);
+    font-size: 1rem;
+    font-weight: 800;
+    color: var(--primary-blue);
+    padding: 5px 7px;
+    border-radius: 5px;
+    text-align: center;
+    outline: 0;
+    width: 100px;
+}
+
+#SetTimer::placeholder{
+    color: var(--primary-blue);
+}
+
+#SetTimer:focus::placeholder{
+    color:transparent;
+    
+}
