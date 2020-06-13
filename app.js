@@ -80,12 +80,26 @@ function deleteCrossed(){
     })
 }
 
-//Edit Icon
+//Edit Icon and Timer Icon
 const editItems = document.querySelector('#editItems')
+const focusTool = document.querySelector('#timer')
+
 editItems.addEventListener('click', itemsEdit)
 
 function itemsEdit(){
     editItems.classList.toggle('active')
+    
+    if (editItems.classList.contains('active')){
+        focusTool.removeEventListener('click', focusSelection)
+        deleteItems.removeEventListener('click', deleteCrossed)
+        focusTool.classList.add('disabled')
+        deleteItems.classList.add('disabled')
+    }else{
+        focusTool.addEventListener('click', focusSelection)
+        deleteItems.addEventListener('click', deleteCrossed)
+        focusTool.classList.remove('disabled')
+        deleteItems.classList.remove('disabled')
+    }
 
     const allItems = [...items.querySelectorAll('div')]
     allItems.forEach(item =>{
@@ -132,6 +146,36 @@ function itemsEdit(){
         localStorage.setItem('items', itemsList)
     })
 }
+
+focusTool.addEventListener('click', focusSelection)
+
+function focusSelection(){
+    focusTool.classList.toggle('active')
+
+    if (focusTool.classList.contains('active')){
+        editItems.removeEventListener('click', itemsEdit)
+        deleteItems.removeEventListener('click', deleteCrossed)
+        editItems.classList.add('disabled')
+        deleteItems.classList.add('disabled')
+    }else{
+        editItems.addEventListener('click', itemsEdit)
+        deleteItems.addEventListener('click', deleteCrossed)
+        editItems.classList.remove('disabled')
+        deleteItems.classList.remove('disabled')
+    }
+
+
+    const items = document.querySelectorAll('.itemLabel')
+    if (items.length !== 0){
+        newInput.disabled = !newInput.attributes.disabled
+        items.forEach(item => {
+            item.classList.toggle('focusSelect')
+        })
+    } 
+}
+
+
+
 
 const timerFace = document.querySelector('h1')
 const progress = document.querySelector('.progress')

@@ -16,6 +16,7 @@ body{
     height: 100vh;
     background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url("https://source.unsplash.com/1600x900/");
     background-size: cover;
+    transition: opacity ;
 }
 
 .todoList{
@@ -30,7 +31,7 @@ body{
     font-family: -apple-system, BlinkMacSystemFont, "Neue Haas Grotesk Text Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
     letter-spacing: 0.05rem;
     overflow: hidden;
-    display: none;
+    /* display: none; */
 }
 
 
@@ -120,6 +121,16 @@ body{
     transform: scaleX(1)
 }
 
+.itemLabel.focusSelect:hover{
+    cursor: default;
+    opacity: 1;
+    background: rgba(0,0,0,0.3);
+}
+
+.itemLabel.focusSelect:hover::before{
+    transform: scaleX(0);
+}
+
 .crossed{
     opacity: 0.5;
 }
@@ -129,6 +140,7 @@ body{
     cursor: pointer;
     opacity: 0.8;
 }
+
 
 
 .edit-mode:hover{
@@ -162,6 +174,11 @@ body{
     transform: scale(1.1);
 }
 
+.edit-button.disabled:hover{
+    cursor: default;
+    opacity: 0.3;
+    transform: none;
+}
 
 
 .focus{
@@ -174,6 +191,7 @@ body{
     background-color: var(--background-color);
     grid-template-rows: 2fr auto 2fr;
     grid-gap: 20px;
+    display: none;
 }
 
 .displays{
