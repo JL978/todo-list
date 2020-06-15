@@ -31,9 +31,11 @@ body{
     font-family: -apple-system, BlinkMacSystemFont, "Neue Haas Grotesk Text Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
     letter-spacing: 0.05rem;
     overflow: hidden;
-    /* display: none; */
 }
 
+.todoList.hide{
+    display: none;
+}
 
 #newItem{
     border: none;
@@ -191,8 +193,31 @@ body{
     background-color: var(--background-color);
     grid-template-rows: 2fr auto 2fr;
     grid-gap: 20px;
-    /* display: none; */
 }
+
+.focus.hide{
+    display: none;
+}
+
+.back{
+    position: fixed;
+    display: flex;
+    align-items: center;
+    top:20px;
+    left:20px;
+    opacity: 0.3;
+    cursor: pointer;
+    padding: 10px;
+}
+
+.back:hover{
+    opacity: 1;
+}
+
+.back>.backLable{
+    font-size: 1rem;
+}
+
 
 .focusOn{
     align-self: end;

@@ -153,6 +153,9 @@ focusTool.addEventListener('click', focusSelection)
 function focusOn(){
     const currentFocus = document.querySelector('.currentFocusItem')
     currentFocus.innerHTML = this.innerHTML
+    document.querySelector('.todoList').classList.toggle('hide')
+    document.querySelector('.focus').classList.toggle('hide')
+    
 }
 
 function focusSelection(){
@@ -188,8 +191,6 @@ function focusSelection(){
 }
 
 
-
-
 const timerFace = document.querySelector('.clockFace')
 const progress = document.querySelector('.progress')
 const beep = document.querySelector('audio')
@@ -198,6 +199,13 @@ let mover
 let counter
 
 setTime(0)
+
+const backButton = document.querySelector('.back')
+backButton.addEventListener('click', ()=>{
+    document.querySelector('.todoList').classList.toggle('hide')
+    document.querySelector('.focus').classList.toggle('hide')
+})
+
 
 function timer(seconds, resume=false, mil=0){
     clearInterval(mover)
