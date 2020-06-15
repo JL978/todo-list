@@ -70,7 +70,7 @@ deleteItems.addEventListener('click', deleteCrossed)
 //Selecting all items with the crossed class and remove them from itemsList and update
 //localStorage, then the item is removed
 function deleteCrossed(){
-    const allItems = [...items.querySelectorAll('div')]
+    const allItems = [...items.querySelectorAll('.itemLabel')]
     const crossedItems = allItems.filter(item => item.classList.contains('crossed'))
 
     crossedItems.forEach(item => {
@@ -149,6 +149,12 @@ function itemsEdit(){
 
 focusTool.addEventListener('click', focusSelection)
 
+
+function focusOn(){
+    const currentFocus = document.querySelector('.currentFocusItem')
+    currentFocus.innerHTML = this.innerHTML
+}
+
 function focusSelection(){
     focusTool.classList.toggle('active')
 
@@ -170,6 +176,13 @@ function focusSelection(){
         newInput.disabled = !newInput.attributes.disabled
         items.forEach(item => {
             item.classList.toggle('focusSelect')
+            if (item.classList.contains('focusSelect')) {
+                item.removeEventListener('click', handleClick)
+                item.addEventListener('click', focusOn)
+            }else{
+                item.removeEventListener('click', focusOn)
+                item.addEventListener('click', handleClick)
+            }
         })
     } 
 }
@@ -177,7 +190,7 @@ function focusSelection(){
 
 
 
-const timerFace = document.querySelector('h1')
+const timerFace = document.querySelector('.clockFace')
 const progress = document.querySelector('.progress')
 const beep = document.querySelector('audio')
 let runTime

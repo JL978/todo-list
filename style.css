@@ -14,7 +14,7 @@ body{
     margin: 0;
     box-sizing: border-box;
     height: 100vh;
-    background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url("https://source.unsplash.com/1600x900/");
+    background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url("https://source.unsplash.com/1600x900/?nature");
     background-size: cover;
     transition: opacity ;
 }
@@ -122,7 +122,7 @@ body{
 }
 
 .itemLabel.focusSelect:hover{
-    cursor: default;
+    cursor: pointer;
     opacity: 1;
     background: rgba(0,0,0,0.3);
 }
@@ -191,8 +191,29 @@ body{
     background-color: var(--background-color);
     grid-template-rows: 2fr auto 2fr;
     grid-gap: 20px;
-    display: none;
+    /* display: none; */
 }
+
+.focusOn{
+    align-self: end;
+    color: var(--primary-blue);
+    text-align: center;
+}
+
+.focusOn h1{
+    text-transform: uppercase;
+}
+
+.focusOn>.focusLable{
+    font-size: 1rem;
+    font-weight: 300;
+}
+
+.focusOn>.currentFocusItem{
+    font-size: 2rem;
+    margin-top: 1rem;
+}
+
 
 .displays{
     grid-row: 2/3;
@@ -207,7 +228,7 @@ body{
     position: absolute;
 }
 
-h1{
+.clockFace{
     font-size: 5rem;
     font-weight: 500;
     color: var(--primary-blue);
