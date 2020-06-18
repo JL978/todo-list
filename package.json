@@ -2,19 +2,12 @@
   "name": "todolist",
   "version": "1.0.0",
   "description": "My version of a to do list made from HTML, CSS and pure JavaScript as an exercise to practice these concepts",
-  "main": "app.js",
+  "main": "index.html",
   "scripts": {
     "deploy": "gh-pages -d build"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/JL978/todoList.git"
-  },
   "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/JL978/todoList/issues"
-  },
   "homepage": "https://JL978.github.io/todoApp",
   "dependencies": {
     "gh-pages": "^3.0.0"
