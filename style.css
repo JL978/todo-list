@@ -1,0 +1,408 @@
+:root{
+    --main-color: white;
+    --primary-blue: #00897B;
+    --background-color: #121212;
+    --p-size: 1vw;
+}
+
+*{
+    box-sizing: border-box;
+    margin: 0
+}
+
+body{
+    margin: 0;
+    box-sizing: border-box;
+    height: 100vh;
+    background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url("https://source.unsplash.com/1600x900/?nature");
+    background-size: cover;
+    transition: opacity ;
+}
+
+.todoList{
+    margin: 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    flex-direction: column;
+    text-align: center;
+    box-sizing: border-box;
+    font-family: -apple-system, BlinkMacSystemFont, "Neue Haas Grotesk Text Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    letter-spacing: 0.05rem;
+    overflow: hidden;
+}
+
+.todoList.hide{
+    display: none;
+}
+
+#newItem{
+    border: none;
+    font-size: 2.2rem;
+    width: min-content;
+    text-align:center;
+    border-bottom: 2px solid var(--main-color);
+    outline: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Neue Haas Grotesk Text Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    opacity: 0.3;
+    background-color: transparent;
+    color: var(--main-color);
+}
+
+#newItem::placeholder{
+    color: var(--main-color);
+}
+
+#newItem:hover{
+    opacity: 0.8;
+    text-shadow: none;
+}
+
+#newItem:focus{
+    opacity: 1;
+    border-bottom: 2px solid white;
+    text-shadow: none;
+}
+
+
+#newItem:focus::placeholder{
+    color: transparent;
+}
+
+.items{
+    position: relative;
+    font-size: 2.2rem;
+    font-weight: 500;
+    color:var(--main-color);
+    white-space: nowrap;
+}
+
+.itemLabel,
+.edit-mode{
+    margin:auto;
+    margin-bottom: 1rem;
+    transition: all 0.5s;
+    position:relative;
+    width: max-content;
+    transition: hover 25ms;
+    outline: 0;
+}
+
+.itemLabel.crossed::before{
+    display: inline-block;
+    content: '';
+    width: 100%;
+    height: .15rem;
+    background-color: var(--main-color);
+    position: absolute;
+    top: 1.25rem;
+    transform: scaleX(1);
+}
+
+.itemLabel::before{
+    display: inline-block;
+    content: '';
+    width: 100%;
+    height: .15rem;
+    background-color: var(--main-color);
+    position: absolute;
+    top: 1.25rem;
+    transition: transform 0.5s;
+    transform-origin: left;
+    transform: scaleX(0);
+}
+
+.itemLabel:hover{
+    transform: scale(1.2);
+    cursor: pointer;
+    opacity: 0.5;
+}
+
+.itemLabel:hover::before{
+    transform: scaleX(1)
+}
+
+.itemLabel.focusSelect:hover{
+    cursor: pointer;
+    opacity: 1;
+    background: rgba(0,0,0,0.3);
+}
+
+.itemLabel.focusSelect:hover::before{
+    transform: scaleX(0);
+}
+
+.crossed{
+    opacity: 0.5;
+}
+
+.crossed:hover{
+    transform: scale(1.2);
+    cursor: pointer;
+    opacity: 0.8;
+}
+
+
+
+.edit-mode:hover{
+    cursor: text;
+    transform:none;
+}
+
+.tools{
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    margin-right: 1rem;
+}
+
+.edit-button{
+    color : var(--main-color);
+    font-size : 2rem;
+    opacity: 0.3;
+    cursor: pointer;
+    margin-bottom: 0.5rem;
+}
+
+.edit-button.active{
+    opacity: 0.8;
+}
+
+.edit-button:hover{
+    opacity: 0.8;
+    transform: scale(1.1);
+}
+
+.edit-button.disabled:hover{
+    cursor: default;
+    opacity: 0.3;
+    transform: none;
+}
+
+
+.focus{
+    display:grid;
+    justify-items: center;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    font-family: -apple-system, BlinkMacSystemFont, "Neue Haas Grotesk Text Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    background-color: var(--background-color);
+    grid-template-rows: 2fr auto 2fr;
+    grid-gap: 20px;
+}
+
+.focus.hide{
+    display: none;
+}
+
+.back{
+    position: fixed;
+    display: flex;
+    align-items: center;
+    top:20px;
+    left:20px;
+    opacity: 0.3;
+    cursor: pointer;
+    padding: 10px;
+}
+
+.back:hover{
+    opacity: 1;
+}
+
+.back>.backLable{
+    font-size: 1rem;
+}
+
+
+.focusOn{
+    align-self: end;
+    color: var(--primary-blue);
+    text-align: center;
+}
+
+.focusOn h1{
+    text-transform: uppercase;
+}
+
+.focusOn>.focusLable{
+    font-size: 1rem;
+    font-weight: 300;
+}
+
+.focusOn>.currentFocusItem{
+    font-size: 2rem;
+    margin-top: 1rem;
+}
+
+
+.displays{
+    grid-row: 2/3;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* the actual timer */
+.timer{
+    position: absolute;
+}
+
+.clockFace{
+    font-size: 5rem;
+    font-weight: 500;
+    color: var(--primary-blue);
+}
+
+/*control buttons*/
+.controls{
+    display: flex;
+    position: absolute;
+    top:70%;
+    justify-content: space-evenly;
+    width: 100px;
+}
+
+
+.control-button{
+    color: var(--primary-blue);
+    z-index: 1000;
+    cursor: pointer;
+}
+.control-button:hover{
+    color: white;
+}
+
+.control-button:active{
+    transform: scale(1.1);
+}
+
+.control-button.inProgress{
+    cursor: default;
+    color: var(--primary-blue);
+}
+
+.control-button.inProgress:active{
+    transform: none;
+}
+
+
+/* the round circle progress bar */
+.progress-bar{
+    width: 40vw;
+    height: 40vw;
+    min-width: 250px;
+    min-height: 250px;
+    max-height: 500px;
+    max-width: 500px;
+    border: var(--primary-blue) solid calc(var(--p-size)/3.5);
+    border-radius: 50%;
+    display: inline-block;
+    margin: 0 auto;
+    position: absolute;
+}
+
+/* the container of the progress ball */
+.progress{
+    width: calc(40vw + calc(var(--p-size)/1.5));
+    height: calc(40vw + calc(var(--p-size)/1.5));
+    min-width: calc(250px + calc(var(--p-size)/1.5));
+    min-height: calc(250px + calc(var(--p-size)/1.5));
+    max-height: calc(500px + calc(var(--p-size)/1.5));
+    max-width: calc(500px + calc(var(--p-size)/1.5));
+    display: flex;
+    justify-content: center;
+}
+
+/* the actual progress ball */
+.progress::before{
+    content: '';
+    width: var(--p-size);
+    height: var(--p-size);
+    max-width: 45px;
+    max-height: 45px;
+    background-color: var(--primary-blue);
+    position: absolute;
+    border-radius: 50%;
+}
+
+.inputs{
+    grid-row: 3/span 1;
+    display: grid;
+    align-self: start;
+    grid-template-rows: repeat(2, 1fr);
+    align-items: center;
+    justify-items: center;
+    grid-gap: 20px;
+}
+
+.buttons{
+    display: grid;
+    grid-gap: 15px;
+    grid-template-columns: repeat(5, 1fr);
+    opacity: 1;
+    transition: opacity 1s;
+}
+
+button{
+    background: none;
+    border: 2px solid var(--primary-blue);
+    border-radius: 5px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: var(--primary-blue);
+    padding: 8px;
+    cursor: pointer;
+    outline: 0;
+}
+
+button:hover{
+    background: #00897B;
+    border: 2px solid white;
+    color: white;
+}
+
+button:active{
+    transform: scale(1.1);
+}
+
+
+.inputs>.buttons.hide{
+    opacity: 0;
+}
+
+.inputs>.time-input{
+    opacity: 1;
+    transition: opacity 1s;
+}
+
+.inputs>.time-input.hide{
+    opacity: 0;
+}
+
+#SetTimer{
+    background: none;
+    border: 2px solid var(--primary-blue);
+    font-size: 1rem;
+    font-weight: 800;
+    color: var(--primary-blue);
+    padding: 5px 7px;
+    border-radius: 5px;
+    text-align: center;
+    outline: 0;
+    width: 100px;
+}
+
+#SetTimer::placeholder{
+    color: var(--primary-blue);
+}
+
+#SetTimer:focus::placeholder{
+    color:transparent;
+    
+}
